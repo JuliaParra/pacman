@@ -1,16 +1,104 @@
 
+@font-face {
+    font-family: PAC-FONT;
+    src: url(/font/PAC-FONT.TTF) format(truetype);
+}
+
+
 body {
-    background-image: url('fondo-pacman.jpg');
+    background-image: url('img/fondo-pacman.jpg');
     background-position: center;
-    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    
+
     
 }
 
-.center {
-    position: absolute;
-    width: 100px;
-    width: 50px;
-    top: 50%;
-    left: 50%;
+header{
+
+    width: 100%;
+    height: 80px;
+    color: aliceblue;
+    display: flex;
+
+}
+
+
+#pacman-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    transform: translateY(-80px); 
+
+
     
 }
+
+
+.ghost{
+    display: none,block;
+    justify-content: center;
+    align-items: center;
+    width: 7%;
+    height: 9vh;
+    margin: 0;
+    transform: translateY(-3px); 
+    
+
+}
+
+
+#cherry {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    transform: translateY(-200px); 
+}
+
+
+#score {
+    width: 10%;
+    position: absolute;
+    top: 30px;
+    right: 00px;
+    color: rgb(218, 242, 0);
+    font-size: 30px;
+    
+}
+
+    
+#game-over {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 90%;
+    left:20%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: #f0f0f0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: 'pac-font';
+
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

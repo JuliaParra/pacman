@@ -4,19 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacman</title>
     <link rel="stylesheet" href="style.css">
+    <title>Pacman</title>
+    
    
 </head>
 
-<body>
-    <img src="pacman.jpg"  alt="Imagen pequeña" class="center">
+<header>
+    
+    <img src="/IMG/pac-man-logo.png" alt="iamgen logo pacman">
+    <img  src="/IMG/pac-man-logo-png-transparent.png" alt="">
+    <div id="score">Score: 0</div>
 
-  <audio autoplay>
-      <source src="Pacman-Game-Start-Sound.mp3" type="audio/mp3">
-      Tu navegador no soporta el elemento de audio.
+</header>
+
+<body>
+
+    <div id="pacman-container">
+
+        <img class="pacman" id="pacman" onclick="eatGhost()" src="img/pacman.png"  alt="imuñeco pacman" id="png">
+        <img class="ghost" id="ghost"  src="/img/fantasmito.png" alt="muñeco fantasma" id="png">
+        <img class="cherry"id="cherry" src="/img/cherry.png"   >
+
+    </div>
+
+        
+    <audio autoplay style="display: none;">
+        
+        <source src="/sound/Pacman-Game-Start-Sound.mp3"  type="audio/mp3">
+
     </audio>
 
+    <div id="container">
+
+        <div id="pacman"></div>
+        <div class="ghost" id="ghost"></div>
+        <div class="cherry" id="cherry"></div>
+        <div class="game-over" id="game-over">Game Over</div>
+    
+    </div>
+
+
+
+    <div id="game-over" style="display: none;">
+
+        <h1>Game Over</h1>
+   
+    </div>
+        
+        
+
+  
+    <script src="/index.js"></script>
 </body>
     
 
