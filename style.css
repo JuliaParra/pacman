@@ -60,7 +60,7 @@ header{
     border-radius: 50%;
     position: absolute;
     display: none;
-    transform: translateY(-200px); 
+    transform: translateY(-8px); 
 }
 
 
@@ -76,7 +76,7 @@ header{
 
     
 #game-over {
-    display: none; /* Inicialmente oculto */
+    display: none; 
     position: fixed;
     top: 90%;
     left:20%;
@@ -87,18 +87,5 @@ header{
     font-family: 'pac-font';
 
 
-} 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
