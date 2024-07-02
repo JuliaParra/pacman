@@ -1,4 +1,4 @@
-## DESCIPCION
+## DESCRIPCION
 
         Requisitos 1:
 1. Crear un proyecto en local
