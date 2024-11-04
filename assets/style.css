@@ -1,9 +1,7 @@
-
 @font-face {
-    font-family: PAC-FONT;
-    src: url(/assets/font/PAC-FONT.TTF) format(truetype);
+    font-family: 'PAC-FONT';
+    src: url('/assets/font/PAC-FONT.TTF') format('truetype');
 }
-
 
 body {
     background-image: url('img/fondo-pacman.jpg');
@@ -11,81 +9,137 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: 'PAC-FONT', Arial, sans-serif;
+    color: #fff;
     overflow: hidden;
-    
-
-    
-}
-
-header{
-
-    width: 100%;
-    height: 80px;
-    color: aliceblue;
-    display: flex;
-
-}
-
-
-#pacman-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
     margin: 0;
-    transform: translateY(-80px); 
-
-
-    
+    padding: 0;
 }
 
-
-.ghost{
-    display: none,block;
-    justify-content: center;
+header {
+    width: 100%;
+    height: 100px;
+    display: flex;
     align-items: center;
-    width: 7%;
-    height: 9vh;
-    margin: 0;
-    transform: translateY(-3px); 
-    
-
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #f0f0f0;
+    font-size: 30px;
 }
 
-
-#cherry {
-    width: 80px;
+header img {
     height: 80px;
-    border-radius: 50%;
-    position: absolute;
-    display: none;
-    transform: translateY(-8px); 
+    width: auto;
 }
-
 
 #score {
-    width: 10%;
-    position: absolute;
-    top: 30px;
-    right: 00px;
     color: rgb(218, 242, 0);
-    font-size: 30px;
-    
+    font-size: 28px;
+    font-weight: bold;
 }
 
-    
+#pacman-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 80px);
+  
+    margin: 0;
+    position: relative;
+}
+
+.pacman,
+.ghost,
+.cherry {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s;
+}
+
+.pacman {
+    width: 80px;
+    height: 80px;
+    z-index: 10;
+    animation: pacman-move 2s linear infinite;
+}
+
+.ghost {
+    display: none;
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s;
+}
+
+#cherry {
+    display: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    animation: cherry-bounce 1s ease-in-out infinite;
+}
+
+@keyframes cherry-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
 #game-over {
-    display: none; 
+    display: none;
     position: fixed;
-    top: 90%;
-    left:20%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     font-size: 60px;
     color: #f0f0f0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
-    font-family: 'pac-font';
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+    font-family: 'PAC-FONT', Arial, sans-serif;
+    z-index: 20;
+    text-align: center;
+}
+
+#game-over h1 {
+    font-size: 100px;
+    margin: 0;
+    color: #ff3333;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+button,
+a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 16px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+a:hover {
+    background-color: #555;
+}
 
 
+@keyframes pacman-move {
+    0% {
+        transform: translateX(0);
+    }
 
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }

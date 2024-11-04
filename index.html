@@ -1,67 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
     <title>Pacman</title>
-    
-   
 </head>
 
-<header>
-    
-    <img src="./assets/img/pac-man-logo.png" alt="iamgen logo pacman">
-    <img  src="./assets/img/pac-man-logo-png-transparent.png" alt="">
-    <div id="score">Score: 0</div>
-
-</header>
-
 <body>
+    <header>
+        <img src="./assets/img/pac-man-logo.png" alt="Logo de Pacman">
+        <div id="score">Score: 0</div>
+    </header>
 
     <div id="pacman-container">
-        
-       
-
-
-        <img class="pacman" id="pacman" onclick="eatGhost()" src="./assets/img/pacman.png"  alt="muñeco pacman" id="png">
-        <img class="ghost" id="ghost"  src="./assets/img/fantasmito.png" alt="muñeco fantasma" id="png">
-        <img class="cherry"id="cherry" src="./assets/img/cherry.png" >
-
-    </div>
-
-        
-    <audio autoplay style="display: none;">
-        
-        <source src="./assets/sound/Pacman-Game-Start-Sound.mp3"   type="audio/mp3">
-
-    </audio>
-
-    <div id="container">
-
-        <div id="pacman"></div>
-        <div class="ghost" id="ghost"></div>
-        <div class="cherry" id="cherry"></div>
-        <div class="game-over" id="game-over">Game Over</div>
-        
-        
-        
-    
+        <img class="pacman" id="pacman" src="./assets/img/pacman.png" alt="Pacman">
+        <img class="ghost" id="ghost" src="./assets/img/fantasmito.png" alt="Fantasma">
+        <img class="cherry" id="cherry" src="./assets/img/cherry.png" alt="Cereza">
     </div>
 
     <div id="game-over" style="display: none;">
-
         <h1>Game Over</h1>
-   
     </div>
-        
-        
 
-  
+    <audio autoplay style="display: none;">
+        <source src="./assets/sound/Pacman-Game-Start-Sound.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="index.js"></script>
 </body>
-    
-
-
 </html>

@@ -90,16 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let ghostCount = 0;
     let isPacmanMoving = false;
 
-    // Evento para mover Pacman y comer fantasmas
+   
     pacman.addEventListener('click', () => {
         if (!isPacmanMoving && ghost.style.display === 'block') {
             isPacmanMoving = true; 
 
-            // Animación de movimiento hacia el fantasma 
+            
             pacman.style.transition = 'left 1s linear';
             pacman.style.left = `${ghost.offsetLeft}px`;
 
-            // Simulación de "comer" el fantasma
+           
             setTimeout(() => {
                 eatGhost();
                 
@@ -116,20 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
         score += 500;
         updateScore();
         cherry.style.display = 'none';
-        ghost.style.display = 'block'; // Mostrar el fantasma después de comer la cereza
-        resetGhostPosition(); // Resetear posición del fantasma
+        ghost.style.display = 'block'; 
+        resetGhostPosition(); 
     });
     function resetGhostPosition() {
-        ghost.style.left = `${initialGhostPosition}px`; // Resetear la posición del fantasma a su posición inicial
+        ghost.style.left = `${initialGhostPosition}px`; 
     }
 
-    // Función para comer fantasmas
+   
     function eatGhost() {
         score += 100;
         updateScore();
         ghostCount++;
 
-        // Mostrar cherry cada 3 fantasmas comidos
         if (ghostCount % 3 === 0) {
             showCherry();
         } else {
@@ -143,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showCherry() {
         cherry.style.display = 'block';
-        ghost.style.display = 'none'; // Ocultar el fantasma cuando aparece la cereza
+        ghost.style.display = 'none'; 
     }
 
     function updateScore() {
@@ -159,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cherry.style.display !== 'block' && ghost.style.display !== 'block') {
             ghost.style.display = 'block';
         }
-    }, 2000);
+    }, 3000);
 });
 
 
