@@ -1,36 +1,55 @@
-## DESCRIPCION
+# Proyecto Pacman
 
-        Requisitos 1:
-1. Crear un proyecto en local
-2. De inicio deberá tener un Readme, gitignore, index.html y un archivo CSS
-3. En el archivo index.html se deberá ver en el centro de la pantalla a Pacman con un tamaño de 100x100 (px)
-4. El uso de git es obligatorio .
+Este proyecto recrea una versión simplificada del clásico juego de **Pacman** utilizando solo HTML, CSS y JavaScript. El objetivo es hacer que Pacman "coma" fantasmas y recolecte cerezas, aumentando el puntaje hasta que se alcance el límite de **Game Over**. 🕹️
+
+## Descripción del Proyecto
+
+El juego comienza con Pacman y un fantasma en escena. Cada vez que el usuario hace clic en el fantasma, Pacman se mueve hacia él, "come" al fantasma y acumula puntos. Los fantasmas reaparecen cada 2 segundos y, cada tres fantasmas comidos, aparece una cereza que otorga puntos extra. Al alcanzar los **5000 puntos**, el juego termina con un mensaje de **Game Over**.
+
+### Características
+
+- **Fondos y Sonido**: Al abrir la aplicación, se reproduce automáticamente un sonido clásico de Pacman y se muestra un fondo característico.
+- **Puntuación Dinámica**: Los puntos se muestran en la esquina superior derecha. Cada fantasma comido otorga **100 puntos** y cada cereza **500 puntos**.
+- **Condición de Victoria**: Al alcanzar los **5000 puntos**, se muestra un mensaje de **Game Over**.
+
+## Requisitos Implementados
+
+1. **Diseño Inicial**:
+   - Imagen de Pacman y fantasma en el centro de la pantalla (100x100 px).
+   - Fondos e iconos basados en la estética de Pacman.
+
+2. **Interactividad**:
+   - Cuando Pacman come un fantasma, este desaparece y Pacman toma su lugar.
+   - Fantasmas reaparecen cada 2 segundos.
+   - Aparece una cereza tras cada tres fantasmas comidos.
+   
+3. **Sistema de Puntos**:
+   - Pacman gana **100 puntos** por cada fantasma comido.
+   - Pacman gana **500 puntos** por cada cereza.
+   - El juego termina con **Game Over** al alcanzar 5000 puntos.
+
+## Herramientas Utilizadas
+
+- **HTML**: Estructura del juego y elementos visuales.
+- **CSS**: Estilos para la posición, tamaño y fondo del juego.
+- **JavaScript**: Lógica de juego, control de puntuación y eventos de interactividad.
+
+## Captura de Pantalla
+
+![Pacman Game]("/assets/img/juego.png)
+![Pacman Game]("/assets/img/pac-man-logo-png-transparent.png)
 
 
-Requisito 2:
-Se necesita implementa la imagen "fondo-pacman" en el background de la página
-Cuando una persona abre la aplicación se debería reproducir el sonido proporcionado.
 
+## Cómo Jugar
 
-Requisito 3:
-Se necesita implementa una cabecera con las dos imágenes proporcionadas.
-Agregar un fantasmita en la escena de 100x100 (px)
+1. Abre `index.html` en tu navegador.
+2. Disfruta viendo a Pacman comer fantasmas y cerezas.
+3. Haz clic en el fantasma para que Pacman lo "coma" y sume puntos.
+4. ¡Sigue jugando hasta alcanzar el **Game Over**!
 
+## Instalación
 
-Requisito 4:
-Pacman ya tiene el poder de comerse el fantasma. Cuando el jugador hace clic en el fantasma pacman debería ocupar su lugar y el fantasma desaparecer.
-
-
-Últimos requisitos:
-Un fanstama debería aparecer en la escena cada 2 segundos y pacman debería poder comerselo
-Cada 3 fanstamas comidos debería aparecer en la escena un "cherry"
-Coloca en la esquina superior derecha, debajo de la cabecera un marcador de 4 dígitos
-Cuando pacman se come un fantasma gana 100 puntos
-Cuando pacman se come un cherry gana 500 puntos
-Cuando la puntuación llegue a 5000 puntos el juego debe marcar Game Over
-
-## HERRAMIENTAS
-
-        HTML
-        CSS
-        JS
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/pacman.git
