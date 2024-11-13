@@ -1,84 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-//     const pacman = document.getElementById('pacman');
-//     const ghost = document.getElementById('ghost');
-//     const cherry = document.getElementById('cherry');
-//     const scoreDisplay = document.getElementById('score');
-//     const gameOverDisplay = document.getElementById('game-over');
-
-//     let score = 0;
-//     let ghostCount = 0;
-//     let isPacmanMoving = false;
-
-//     // Evento para mover Pacman y comer fantasmas
-//     pacman.addEventListener('click', () => {
-//         if (!isPacmanMoving && ghost.style.display === 'block') {
-//             isPacmanMoving = true; 
-
-//             // Animación de movimiento hacia el fantasma 
-//             pacman.style.transition = 'left 1s linear';
-//             pacman.style.left = `${ghost.offsetLeft}px`;
-
-//             // Simulación de "comer" el fantasma
-//             setTimeout(() => {
-//                 eatGhost();
-                
-//                 pacman.style.transition = 'left 1s linear';
-//                 pacman.style.left = '0';
-//                 isPacmanMoving = false; 
-//                 ghost.style.display = 'none'; 
-//             }, 1000);
-//         }
-//     });
-
-//     cherry.addEventListener('click', () => {
-//         console.log("Cereza comida");
-//         score += 500;
-//         updateScore();
-//         cherry.style.display = 'none';
-//     });
-
-//     // Función para comer fantasmas
-//     function eatGhost() {
-        
-
-//         score += 100;
-//         updateScore();
-//         ghostCount++;
-
-//         // Mostrar cherry cada 3 fantasmas comidos
-//         if (ghostCount % 3 === 0) {
-//             showCherry();
-//         }
-
-        
-//         if (score >= 5000) {
-//             gameOver();
-//         }
-//     }
-
-    
-//     function showCherry() {
-//         cherry.style.display = 'block';
-//     }
-
-   
-//     function updateScore() {
-//         scoreDisplay.textContent = `Score: ${score}`;
-//     }
-
-    
-//     function gameOver() {
-        
-//         gameOverDisplay.style.display = 'block';
-//     }
-
-//     // Generar fantasmas cada 2 segundos
-//     setInterval(() => {
-//         ghost.style.display = 'block';
-//     }, 2000);
-// });
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const pacman = document.getElementById('pacman');
     const ghost = document.getElementById('ghost');
@@ -88,42 +7,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = 0;
     let ghostCount = 0;
+    let isGameOver = false;
     let isPacmanMoving = false;
+    let pacmanPos = { x: 150, y: 150 }; // Posición inicial fija de Pacman
+
+    const container = document.getElementById('pacman-container');
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+    const minY = 120; // Mínimo en Y para evitar que se mueva a la esquina superior
+
+    function getRandomPosition() {
+        const maxX = containerWidth - 80; // Ajuste según tamaño de ghost/cherry
+        const maxY = containerHeight - 80;
+        return {
+            x: Math.floor(Math.random() * maxX),
+            y: Math.floor(Math.random() * (maxY - minY)) + minY,
+        };
+    }
+
+    function moveGhost() {
+        const { x, y } = getRandomPosition();
+        ghost.style.left = `${x}px`;
+        ghost.style.top = `${y}px`;
+    }
+
+    function moveCherry() {
+        const { x, y } = getRandomPosition();
+        cherry.style.left = `${x}px`;
+        cherry.style.top = `${y}px`;
+    }
+
+   function resetPacmanPosition() {
+    pacman.style.left = '47%';
+    pacman.style.top = '47%';
+    pacman.style.transform = 'translate(-47%, -47%)';
+}
 
    
+
+  
     pacman.addEventListener('click', () => {
-        if (!isPacmanMoving && ghost.style.display === 'block') {
-            isPacmanMoving = true; 
+        if (!isGameOver && !isPacmanMoving && ghost.style.display === 'block') {
+            isPacmanMoving = true;
 
-            
-            pacman.style.transition = 'left 1s linear';
+            pacman.style.transition = 'left 1s linear, top 1s linear';
             pacman.style.left = `${ghost.offsetLeft}px`;
+            pacman.style.top = `${ghost.offsetTop}px`;
 
-           
             setTimeout(() => {
                 eatGhost();
-                
-                pacman.style.transition = 'left 1s linear';
-                pacman.style.left = '0';
-                isPacmanMoving = false; 
-                ghost.style.display = 'none'; 
+                resetPacmanPosition(); // Regresa Pacman a su posición inicial fija
+                isPacmanMoving = false;
+                ghost.style.display = 'none';
             }, 1000);
         }
     });
 
     cherry.addEventListener('click', () => {
-        console.log("Cereza comida");
-        score += 500;
-        updateScore();
-        cherry.style.display = 'none';
-        ghost.style.display = 'block'; 
-        resetGhostPosition(); 
+        if (!isGameOver) {
+            score += 500;
+            updateScore();
+            cherry.style.display = 'none';
+            ghost.style.display = 'block';
+            resetGhostPosition();
+        }
     });
+
     function resetGhostPosition() {
-        ghost.style.left = `${initialGhostPosition}px`; 
+        moveGhost();
+        ghost.style.display = 'block';
     }
 
-   
     function eatGhost() {
         score += 100;
         updateScore();
@@ -132,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ghostCount % 3 === 0) {
             showCherry();
         } else {
-            ghost.style.display = 'block';
+            resetGhostPosition();
         }
 
         if (score >= 5000) {
@@ -142,7 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showCherry() {
         cherry.style.display = 'block';
-        ghost.style.display = 'none'; 
+        ghost.style.display = 'none';
+        moveCherry();
     }
 
     function updateScore() {
@@ -150,15 +105,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function gameOver() {
+        isGameOver = true;
         gameOverDisplay.style.display = 'block';
+        ghost.style.display = 'none';
+        cherry.style.display = 'none';
+        pacman.style.display = 'none';
+        scoreDisplay.textContent = `Final Score: ${score}`;
     }
 
-    // Generar fantasmas cada 2 segundos si no hay cereza
+    // Generar nuevos fantasmas si no hay cereza ni fantasmas en juego
     setInterval(() => {
-        if (cherry.style.display !== 'block' && ghost.style.display !== 'block') {
-            ghost.style.display = 'block';
+        if (!isGameOver && cherry.style.display !== 'block' && ghost.style.display !== 'block') {
+            resetGhostPosition();
         }
     }, 3000);
+
+    // Establece la posición inicial de Pacman al cargar la página
+    resetPacmanPosition();
 });
-
-
