@@ -36,10 +36,8 @@ El juego comienza con Pacman y un fantasma en escena. Cada vez que el usuario ha
 
 ## Captura de Pantalla
 
-![Pacman Game]("/assets/img/juego.png)
-![Pacman Game]("/assets/img/pac-man-logo-png-transparent.png)
-
-
+![Pacman Game](assets/img/juego.png)
+![Pacman Logo](assets/img/pac-man-logo-png-transparent.png)
 
 ## Cómo Jugar
 
