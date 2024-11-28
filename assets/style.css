@@ -41,11 +41,25 @@ header img {
 }
 
 #score {
-    color: rgb(218, 242, 0);
-    font-size: 28px;
+    color: #f9d71c;
+  
+    font-size: 40px;
+ 
     font-weight: bold;
+    font-family: Arial, sans-serif;
+ 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 10px #f9d71c, 0 0 20px #f9d71c;
+    background: linear-gradient(90deg, #ffbf00, #ffdd00, #f9d71c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: transform 0.2s ease, color 0.3s ease;
 }
 
+#score.score-update {
+    transform: scale(1.2);
+    color: #ffffff;
+}
 #pacman-container {
     display: flex;
     justify-content: center;
@@ -72,11 +86,11 @@ header img {
     background: url('/assets/img/pacman.png') no-repeat center;
     background-size: contain;
     left: 47%;
-    /* Centra Pacman horizontalmente */
+   
     top: 47%;
-    /* Centra Pacman verticalmente */
+ 
     transform: translate(-50%, -50%);
-    /* Ajuste preciso para centrar en el contenedor */
+
 }
 
 .ghost {

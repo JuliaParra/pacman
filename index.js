@@ -4,20 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const cherry = document.getElementById('cherry');
     const scoreDisplay = document.getElementById('score');
     const gameOverDisplay = document.getElementById('game-over');
-
     let score = 0;
     let ghostCount = 0;
     let isGameOver = false;
     let isPacmanMoving = false;
-    let pacmanPos = { x: 150, y: 150 }; // Posición inicial fija de Pacman
-
     const container = document.getElementById('pacman-container');
     const containerWidth = container.clientWidth;
     const containerHeight = container.clientHeight;
-    const minY = 120; // Mínimo en Y para evitar que se mueva a la esquina superior
+    const minY = 120;
 
     function getRandomPosition() {
-        const maxX = containerWidth - 80; // Ajuste según tamaño de ghost/cherry
+        const maxX = containerWidth - 80;
         const maxY = containerHeight - 80;
         return {
             x: Math.floor(Math.random() * maxX),
@@ -37,26 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
         cherry.style.top = `${y}px`;
     }
 
-   function resetPacmanPosition() {
-    pacman.style.left = '47%';
-    pacman.style.top = '47%';
-    pacman.style.transform = 'translate(-47%, -47%)';
-}
+    function resetPacmanPosition() {
+        pacman.style.left = '47%';
+        pacman.style.top = '47%';
+        pacman.style.transform = 'translate(-47%, -47%)';
+    }
 
-   
-
-  
     pacman.addEventListener('click', () => {
         if (!isGameOver && !isPacmanMoving && ghost.style.display === 'block') {
             isPacmanMoving = true;
-
             pacman.style.transition = 'left 1s linear, top 1s linear';
             pacman.style.left = `${ghost.offsetLeft}px`;
             pacman.style.top = `${ghost.offsetTop}px`;
 
             setTimeout(() => {
                 eatGhost();
-                resetPacmanPosition(); // Regresa Pacman a su posición inicial fija
+                resetPacmanPosition();
                 isPacmanMoving = false;
                 ghost.style.display = 'none';
             }, 1000);
@@ -100,9 +93,15 @@ document.addEventListener('DOMContentLoaded', () => {
         moveCherry();
     }
 
-    function updateScore() {
-        scoreDisplay.textContent = `Score: ${score}`;
-    }
+   function updateScore() {
+    const scoreDisplay = document.getElementById('score');
+    scoreDisplay.textContent = `Score: ${score}`;
+    scoreDisplay.classList.add('score-update');
+    setTimeout(() => {
+        scoreDisplay.classList.remove('score-update');
+    }, 300);
+}
+
 
     function gameOver() {
         isGameOver = true;
@@ -113,13 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreDisplay.textContent = `Final Score: ${score}`;
     }
 
-    // Generar nuevos fantasmas si no hay cereza ni fantasmas en juego
+    function increaseDifficulty() {
+        ghost.style.transition = 'all 0.8s linear';
+    }
+
     setInterval(() => {
         if (!isGameOver && cherry.style.display !== 'block' && ghost.style.display !== 'block') {
             resetGhostPosition();
+            increaseDifficulty();
         }
     }, 3000);
 
-    // Establece la posición inicial de Pacman al cargar la página
     resetPacmanPosition();
 });
